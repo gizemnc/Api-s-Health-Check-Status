@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Blazor_ApiStatusCheck.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Blazor_ApiStatusCheck.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\wwwroot\\images\\istikbal_logo.png",
+      "PackagePath": "staticwebassets\\images\\istikbal_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\gzmnr\\Desktop\\dotnet\\Blazor_ApiStatusCheck\\Blazor_ApiStatusCheck\\wwwroot\\images\\istikbal_logo_2.png",
+      "PackagePath": "staticwebassets\\images\\istikbal_logo_2.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Blazor_ApiStatusCheck.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Blazor_ApiStatusCheck.props",
+      "PackagePath": "build\\Blazor_ApiStatusCheck.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Blazor_ApiStatusCheck.props",
+      "PackagePath": "buildMultiTargeting\\Blazor_ApiStatusCheck.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Blazor_ApiStatusCheck.props",
+      "PackagePath": "buildTransitive\\Blazor_ApiStatusCheck.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

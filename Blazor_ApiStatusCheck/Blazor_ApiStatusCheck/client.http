@@ -1,0 +1,9 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@address = https://localhost:7196
+
+
+
+GET {{address}}/health
+
+

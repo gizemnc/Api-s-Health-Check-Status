@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health Checks UI </title>
+    <link rel="stylesheet" href="ui/resources/healthchecksui-min.css">
+    <link rel="stylesheet" href="ui/resources/css/dotnet.css">
+    <style>
+        /* fallback */
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://localhost:7288/ui/resources/1ae4e3706fe3f478fcc1.woff2) format('woff2');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2Fzc2V0cy9tYXRlcmlhbC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsYUFBYTtBQUNiO0lBQ0ksNkJBQTZCO0lBQzdCLGtCQUFrQjtJQUNsQixnQkFBZ0I7SUFDaEIsNERBQWdEO0VBQ2xEOztFQUVBO0lBQ0UsNkJBQTZCO0lBQzdCLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsZUFBZTtJQUNmLGNBQWM7SUFDZCxzQkFBc0I7SUFDdEIsb0JBQW9CO0lBQ3BCLHFCQUFxQjtJQUNyQixtQkFBbUI7SUFDbkIsaUJBQWlCO0lBQ2pCLGNBQWM7SUFDZCxxQ0FBcUM7SUFDckMsbUNBQW1DO0VBQ3JDIiwic291cmNlc0NvbnRlbnQiOlsiLyogZmFsbGJhY2sgKi9cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnTWF0ZXJpYWwgSWNvbnMnO1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LXdlaWdodDogNDAwO1xuICAgIHNyYzogdXJsKC4vZm9udHMvbWF0ZXJpYWwud29mZjIpIGZvcm1hdCgnd29mZjInKTtcbiAgfVxuICBcbiAgLm1hdGVyaWFsLWljb25zIHtcbiAgICBmb250LWZhbWlseTogJ01hdGVyaWFsIEljb25zJztcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LXNpemU6IDE4cHg7XG4gICAgbGluZS1oZWlnaHQ6IDE7XG4gICAgbGV0dGVyLXNwYWNpbmc6IG5vcm1hbDtcbiAgICB0ZXh0LXRyYW5zZm9ybTogbm9uZTtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB3b3JkLXdyYXA6IG5vcm1hbDtcbiAgICBkaXJlY3Rpb246IGx0cjtcbiAgICAtd2Via2l0LWZvbnQtZmVhdHVyZS1zZXR0aW5nczogJ2xpZ2EnO1xuICAgIC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IGFudGlhbGlhc2VkO1xuICB9Il0sInNvdXJjZVJvb3QiOiIifQ== */
+    </style>
+    <style>
+        .vertical-timeline * {
+            box-sizing: border-box
+        }
+
+        .vertical-timeline {
+            width: 95%;
+            max-width: 1170px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2em 0
+        }
+
+            .vertical-timeline::after {
+                content: '';
+                display: table;
+                clear: both
+            }
+
+            .vertical-timeline::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 18px;
+                height: 100%;
+                width: 4px;
+                background: #fff
+            }
+
+        @media only screen and (min-width:1170px) {
+            .vertical-timeline.vertical-timeline--two-columns {
+                width: 90%
+            }
+
+                .vertical-timeline.vertical-timeline--two-columns:before {
+                    left: 50%;
+                    margin-left: -2px
+                }
+        }
+
+        .vertical-timeline-element {
+            position: relative;
+            margin: 2em 0
+        }
+
+            .vertical-timeline-element > div {
+                min-height: 1px
+            }
+
+            .vertical-timeline-element:after {
+                content: "";
+                display: table;
+                clear: both
+            }
+
+            .vertical-timeline-element:first-child {
+                margin-top: 0
+            }
+
+            .vertical-timeline-element:last-child {
+                margin-bottom: 0
+            }
+
+        @media only screen and (min-width:1170px) {
+            .vertical-timeline-element {
+                margin: 4em 0
+            }
+
+                .vertical-timeline-element:first-child {
+                    margin-top: 0
+                }
+
+                .vertical-timeline-element:last-child {
+                    margin-bottom: 0
+                }
+        }
+
+        .vertical-timeline-element-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #fff,inset 0 2px 0 rgba(0,0,0,.08),0 3px 0 4px rgba(0,0,0,.05)
+        }
+
+            .vertical-timeline-element-icon svg {
+                display: block;
+                width: 24px;
+                height: 24px;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                margin-left: -12px;
+                margin-top: -12px
+            }
+
+        @media only screen and (min-width:1170px) {
+            .vertical-timeline--two-columns .vertical-timeline-element-icon {
+                width: 60px;
+                height: 60px;
+                left: 50%;
+                margin-left: -30px
+            }
+        }
+
+        .vertical-timeline-element-icon {
+            -webkit-transform: translateZ(0);
+            -webkit-backface-visibility: hidden
+        }
+
+        .vertical-timeline--animate .vertical-timeline-element-icon.is-hidden {
+            visibility: hidden
+        }
+
+        .vertical-timeline--animate .vertical-timeline-element-icon.bounce-in {
+            visibility: visible;
+            -webkit-animation: cd-bounce-1 .6s;
+            -moz-animation: cd-bounce-1 .6s;
+            animation: cd-bounce-1 .6s
+        }
+
+        @-webkit-keyframes cd-bounce-1 {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale(.5)
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: scale(1.2)
+            }
+
+            100% {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @-moz-keyframes cd-bounce-1 {
+            0% {
+                opacity: 0;
+                -moz-transform: scale(.5)
+            }
+
+            60% {
+                opacity: 1;
+                -moz-transform: scale(1.2)
+            }
+
+            100% {
+                -moz-transform: scale(1)
+            }
+        }
+
+        @keyframes cd-bounce-1 {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale(.5);
+                -moz-transform: scale(.5);
+                -ms-transform: scale(.5);
+                -o-transform: scale(.5);
+                transform: scale(.5)
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -ms-transform: scale(1.2);
+                -o-transform: scale(1.2);
+                transform: scale(1.2)
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+                transform: scale(1)
+            }
+        }
+
+        .vertical-timeline-element-content {
+            position: relative;
+            margin-left: 60px;
+            background: #fff;
+            border-radius: .25em;
+            padding: 1em;
+            box-shadow: 0 3px 0 #ddd
+        }
+
+        .vertical-timeline-element--no-children .vertical-timeline-element-content {
+            background: 0 0;
+            box-shadow: none
+        }
+
+        .vertical-timeline-element-content:after {
+            content: "";
+            display: table;
+            clear: both
+        }
+
+        .vertical-timeline-element-content h2 {
+            color: #303e49
+        }
+
+        .vertical-timeline-element-content .vertical-timeline-element-date, .vertical-timeline-element-content p {
+            font-size: 13px;
+            font-size: .8125rem;
+            font-weight: 500
+        }
+
+        .vertical-timeline-element-content .vertical-timeline-element-date {
+            display: inline-block
+        }
+
+        .vertical-timeline-element-content p {
+            margin: 1em 0 0;
+            line-height: 1.6
+        }
+
+        .vertical-timeline-element-title {
+            margin: 0
+        }
+
+        .vertical-timeline-element-subtitle {
+            margin: 0
+        }
+
+        .vertical-timeline-element-content .vertical-timeline-element-date {
+            float: left;
+            padding: .8em 0;
+            opacity: .7
+        }
+
+        .vertical-timeline-element-content-arrow {
+            content: '';
+            position: absolute;
+            top: 16px;
+            right: 100%;
+            height: 0;
+            width: 0;
+            border: 7px solid transparent;
+            border-right: 7px solid #fff
+        }
+
+        .vertical-timeline-element--no-children .vertical-timeline-element-content-arrow {
+            display: none
+        }
+
+        @media only screen and (min-width:768px) {
+            .vertical-timeline-element-content h2 {
+                font-size: 20px;
+                font-size: 1.25rem
+            }
+
+            .vertical-timeline-element-content p {
+                font-size: 16px;
+                font-size: 1rem
+            }
+
+            .vertical-timeline-element-content .vertical-timeline-element-date {
+                font-size: 14px;
+                font-size: .875rem
+            }
+        }
+
+        @media only screen and (min-width:1170px) {
+            .vertical-timeline--two-columns .vertical-timeline-element-content {
+                margin-left: 0;
+                padding: 1.5em;
+                width: 44%
+            }
+
+            .vertical-timeline--two-columns .vertical-timeline-element-content-arrow {
+                top: 24px;
+                left: 100%;
+                transform: rotate(180deg)
+            }
+
+            .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
+                position: absolute;
+                width: 100%;
+                left: 124%;
+                top: 6px;
+                font-size: 16px;
+                font-size: 1rem
+            }
+
+            .vertical-timeline--two-columns .vertical-timeline-element.vertical-timeline-element--right .vertical-timeline-element-content, .vertical-timeline--two-columns .vertical-timeline-element:nth-child(even):not(.vertical-timeline-element--left) .vertical-timeline-element-content {
+                float: right
+            }
+
+            .vertical-timeline--two-columns .vertical-timeline-element.vertical-timeline-element--right .vertical-timeline-element-content-arrow, .vertical-timeline--two-columns .vertical-timeline-element:nth-child(even):not(.vertical-timeline-element--left) .vertical-timeline-element-content-arrow {
+                top: 24px;
+                left: auto;
+                right: 100%;
+                transform: rotate(0)
+            }
+
+            .vertical-timeline--two-columns .vertical-timeline-element.vertical-timeline-element--right .vertical-timeline-element-content .vertical-timeline-element-date, .vertical-timeline--two-columns .vertical-timeline-element:nth-child(even):not(.vertical-timeline-element--left) .vertical-timeline-element-content .vertical-timeline-element-date {
+                left: auto;
+                right: 124%;
+                text-align: right
+            }
+        }
+
+        .vertical-timeline--animate .vertical-timeline-element-content.is-hidden {
+            visibility: hidden
+        }
+
+        .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
+            visibility: visible;
+            -webkit-animation: cd-bounce-2 .6s;
+            -moz-animation: cd-bounce-2 .6s;
+            animation: cd-bounce-2 .6s
+        }
+
+        @media only screen and (min-width:1170px) {
+            .vertical-timeline--two-columns.vertical-timeline--animate .vertical-timeline-element.vertical-timeline-element--right .vertical-timeline-element-content.bounce-in, .vertical-timeline--two-columns.vertical-timeline--animate .vertical-timeline-element:nth-child(even):not(.vertical-timeline-element--left) .vertical-timeline-element-content.bounce-in {
+                -webkit-animation: cd-bounce-2-inverse .6s;
+                -moz-animation: cd-bounce-2-inverse .6s;
+                animation: cd-bounce-2-inverse .6s
+            }
+        }
+
+        @media only screen and (max-width:1169px) {
+            .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
+                visibility: visible;
+                -webkit-animation: cd-bounce-2-inverse .6s;
+                -moz-animation: cd-bounce-2-inverse .6s;
+                animation: cd-bounce-2-inverse .6s
+            }
+        }
+
+        @-webkit-keyframes cd-bounce-2 {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateX(-100px)
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translateX(20px)
+            }
+
+            100% {
+                -webkit-transform: translateX(0)
+            }
+        }
+
+        @-moz-keyframes cd-bounce-2 {
+            0% {
+                opacity: 0;
+                -moz-transform: translateX(-100px)
+            }
+
+            60% {
+                opacity: 1;
+                -moz-transform: translateX(20px)
+            }
+
+            100% {
+                -moz-transform: translateX(0)
+            }
+        }
+
+        @keyframes cd-bounce-2 {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateX(-100px);
+                -moz-transform: translateX(-100px);
+                -ms-transform: translateX(-100px);
+                -o-transform: translateX(-100px);
+                transform: translateX(-100px)
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translateX(20px);
+                -moz-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                -o-transform: translateX(20px);
+                transform: translateX(20px)
+            }
+
+            100% {
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0);
+                -ms-transform: translateX(0);
+                -o-transform: translateX(0);
+                transform: translateX(0)
+            }
+        }
+
+        @-webkit-keyframes cd-bounce-2-inverse {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateX(100px)
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translateX(-20px)
+            }
+
+            100% {
+                -webkit-transform: translateX(0)
+            }
+        }
+
+        @-moz-keyframes cd-bounce-2-inverse {
+            0% {
+                opacity: 0;
+                -moz-transform: translateX(100px)
+            }
+
+            60% {
+                opacity: 1;
+                -moz-transform: translateX(-20px)
+            }
+
+            100% {
+                -moz-transform: translateX(0)
+            }
+        }
+
+        @keyframes cd-bounce-2-inverse {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateX(100px);
+                -moz-transform: translateX(100px);
+                -ms-transform: translateX(100px);
+                -o-transform: translateX(100px);
+                transform: translateX(100px)
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translateX(-20px);
+                -moz-transform: translateX(-20px);
+                -ms-transform: translateX(-20px);
+                -o-transform: translateX(-20px);
+                transform: translateX(-20px)
+            }
+
+            100% {
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0);
+                -ms-transform: translateX(0);
+                -o-transform: translateX(0);
+                transform: translateX(0)
+            }
+        }
+        /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9yZWFjdC12ZXJ0aWNhbC10aW1lbGluZS1jb21wb25lbnQvc3R5bGUubWluLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxxQkFBcUIscUJBQXFCLENBQUMsbUJBQW1CLFNBQVMsQ0FBQyxnQkFBZ0IsQ0FBQyxhQUFhLENBQUMsaUJBQWlCLENBQUMsYUFBYSxDQUFDLDBCQUEwQixVQUFVLENBQUMsYUFBYSxDQUFDLFVBQVUsQ0FBQywyQkFBMkIsVUFBVSxDQUFDLGlCQUFpQixDQUFDLEtBQUssQ0FBQyxTQUFTLENBQUMsV0FBVyxDQUFDLFNBQVMsQ0FBQyxlQUFlLENBQUMsMENBQTBDLGtEQUFrRCxTQUFTLENBQUMseURBQXlELFFBQVEsQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDLDJCQUEyQixpQkFBaUIsQ0FBQyxZQUFZLENBQUMsK0JBQStCLGNBQWMsQ0FBQyxpQ0FBaUMsVUFBVSxDQUFDLGFBQWEsQ0FBQyxVQUFVLENBQUMsdUNBQXVDLFlBQVksQ0FBQyxzQ0FBc0MsZUFBZSxDQUFDLDBDQUEwQywyQkFBMkIsWUFBWSxDQUFDLHVDQUF1QyxZQUFZLENBQUMsc0NBQXNDLGVBQWUsQ0FBQyxDQUFDLGdDQUFnQyxpQkFBaUIsQ0FBQyxLQUFLLENBQUMsTUFBTSxDQUFDLFVBQVUsQ0FBQyxXQUFXLENBQUMsaUJBQWlCLENBQUMsbUZBQW1GLENBQUMsb0NBQW9DLGFBQWEsQ0FBQyxVQUFVLENBQUMsV0FBVyxDQUFDLGlCQUFpQixDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsaUJBQWlCLENBQUMsZ0JBQWdCLENBQUMsMENBQTBDLGdFQUFnRSxVQUFVLENBQUMsV0FBVyxDQUFDLFFBQVEsQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDLGdDQUFnQywrQkFBK0IsQ0FBQyxrQ0FBa0MsQ0FBQyxzRUFBc0UsaUJBQWlCLENBQUMsc0VBQXNFLGtCQUFrQixDQUFDLGlDQUFpQyxDQUFDLDhCQUE4QixDQUFDLHlCQUF5QixD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LElBQUksU0FBUyxDQUFDLG1DQUFtQyxDQUFDLEtBQUssK0JBQStCLENBQUMsQ0FBQyxvQ0FBb0MsR0FBRyxTQUFTLENBQUMsZ0NBQWdDLENBQUMsSUFBSSxTQUFTLENBQUMsZ0NBQWdDLENBQUMsS0FBSyw0QkFBNEIsQ0FBQyxDQUFDLCtCQUErQixHQUFHLFNBQVMsQ0FBQyxtQ0FBbUMsQ0FBQyxnQ0FBZ0MsQ0FBQywrQkFBK0IsQ0FBQyw4QkFBOEIsQ0FBQywyQkFBMkIsQ0FBQyxJQUFJLFNBQVMsQ0FBQyxtQ0FBbUMsQ0FBQyxnQ0FBZ0MsQ0FBQywrQkFBK0IsQ0FBQyw4QkFBOEIsQ0FBQywyQkFBMkIsQ0FBQyxLQUFLLCtCQUErQixDQUFDLDRCQUE0QixDQUFDLDJCQUEyQixDQUFDLDBCQUEwQixDQUFDLHVCQUF1QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLnZlcnRpY2FsLXRpbWVsaW5lICp7Ym94LXNpemluZzpib3JkZXItYm94fS52ZXJ0aWNhbC10aW1lbGluZXt3aWR0aDo5NSU7bWF4LXdpZHRoOjExNzBweDttYXJnaW46MCBhdXRvO3Bvc2l0aW9uOnJlbGF0aXZlO3BhZGRpbmc6MmVtIDB9LnZlcnRpY2FsLXRpbWVsaW5lOjphZnRlcntjb250ZW50OicnO2Rpc3BsYXk6dGFibGU7Y2xlYXI6Ym90aH0udmVydGljYWwtdGltZWxpbmU6OmJlZm9yZXtjb250ZW50OicnO3Bvc2l0aW9uOmFic29sdXRlO3RvcDowO2xlZnQ6MThweDtoZWlnaHQ6MTAwJTt3aWR0aDo0cHg7YmFja2dyb3VuZDojZmZmfUBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDoxMTcwcHgpey52ZXJ0aWNhbC10aW1lbGluZS52ZXJ0aWNhbC10aW1lbGluZS0tdHdvLWNvbHVtbnN7d2lkdGg6OTAlfS52ZXJ0aWNhbC10aW1lbGluZS52ZXJ0aWNhbC10aW1lbGluZS0tdHdvLWNvbHVtbnM6YmVmb3Jle2xlZnQ6NTAlO21hcmdpbi1sZWZ0Oi0ycHh9fS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50e3Bvc2l0aW9uOnJlbGF0aXZlO21hcmdpbjoyZW0gMH0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudD5kaXZ7bWluLWhlaWdodDoxcHh9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQ6YWZ0ZXJ7Y29udGVudDpcIlwiO2Rpc3BsYXk6dGFibGU7Y2xlYXI6Ym90aH0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudDpmaXJzdC1jaGlsZHttYXJnaW4tdG9wOjB9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQ6bGFzdC1jaGlsZHttYXJnaW4tYm90dG9tOjB9QG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOjExNzBweCl7LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnR7bWFyZ2luOjRlbSAwfS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50OmZpcnN0LWNoaWxke21hcmdpbi10b3A6MH0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudDpsYXN0LWNoaWxke21hcmdpbi1ib3R0b206MH19LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtaWNvbntwb3NpdGlvbjphYnNvbHV0ZTt0b3A6MDtsZWZ0OjA7d2lkdGg6NDBweDtoZWlnaHQ6NDBweDtib3JkZXItcmFkaXVzOjUwJTtib3gtc2hhZG93OjAgMCAwIDRweCAjZmZmLGluc2V0IDAgMnB4IDAgcmdiYSgwLDAsMCwuMDgpLDAgM3B4IDAgNHB4IHJnYmEoMCwwLDAsLjA1KX0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1pY29uIHN2Z3tkaXNwbGF5OmJsb2NrO3dpZHRoOjI0cHg7aGVpZ2h0OjI0cHg7cG9zaXRpb246cmVsYXRpdmU7bGVmdDo1MCU7dG9wOjUwJTttYXJnaW4tbGVmdDotMTJweDttYXJnaW4tdG9wOi0xMnB4fUBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDoxMTcwcHgpey52ZXJ0aWNhbC10aW1lbGluZS0tdHdvLWNvbHVtbnMgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtaWNvbnt3aWR0aDo2MHB4O2hlaWdodDo2MHB4O2xlZnQ6NTAlO21hcmdpbi1sZWZ0Oi0zMHB4fX0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1pY29uey13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVooMCk7LXdlYmtpdC1iYWNrZmFjZS12aXNpYmlsaXR5OmhpZGRlbn0udmVydGljYWwtdGltZWxpbmUtLWFuaW1hdGUgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtaWNvbi5pcy1oaWRkZW57dmlzaWJpbGl0eTpoaWRkZW59LnZlcnRpY2FsLXRpbWVsaW5lLS1hbmltYXRlIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWljb24uYm91bmNlLWlue3Zpc2liaWxpdHk6dmlzaWJsZTstd2Via2l0LWFuaW1hdGlvbjpjZC1ib3VuY2UtMSAuNnM7LW1vei1hbmltYXRpb246Y2QtYm91bmNlLTEgLjZzO2FuaW1hdGlvbjpjZC1ib3VuY2UtMSAuNnN9QC13ZWJraXQta2V5ZnJhbWVzIGNkLWJvdW5jZS0xezAle29wYWNpdHk6MDstd2Via2l0LXRyYW5zZm9ybTpzY2FsZSguNSl9NjAle29wYWNpdHk6MTstd2Via2l0LXRyYW5zZm9ybTpzY2FsZSgxLjIpfTEwMCV7LXdlYmtpdC10cmFuc2Zvcm06c2NhbGUoMSl9fUAtbW96LWtleWZyYW1lcyBjZC1ib3VuY2UtMXswJXtvcGFjaXR5OjA7LW1vei10cmFuc2Zvcm06c2NhbGUoLjUpfTYwJXtvcGFjaXR5OjE7LW1vei10cmFuc2Zvcm06c2NhbGUoMS4yKX0xMDAley1tb3otdHJhbnNmb3JtOnNjYWxlKDEpfX1Aa2V5ZnJhbWVzIGNkLWJvdW5jZS0xezAle29wYWNpdHk6MDstd2Via2l0LXRyYW5zZm9ybTpzY2FsZSguNSk7LW1vei10cmFuc2Zvcm06c2NhbGUoLjUpOy1tcy10cmFuc2Zvcm06c2NhbGUoLjUpOy1vLXRyYW5zZm9ybTpzY2FsZSguNSk7dHJhbnNmb3JtOnNjYWxlKC41KX02MCV7b3BhY2l0eToxOy13ZWJraXQtdHJhbnNmb3JtOnNjYWxlKDEuMik7LW1vei10cmFuc2Zvcm06c2NhbGUoMS4yKTstbXMtdHJhbnNmb3JtOnNjYWxlKDEuMik7LW8tdHJhbnNmb3JtOnNjYWxlKDEuMik7dHJhbnNmb3JtOnNjYWxlKDEuMil9MTAwJXstd2Via2l0LXRyYW5zZm9ybTpzY2FsZSgxKTstbW96LXRyYW5zZm9ybTpzY2FsZSgxKTstbXMtdHJhbnNmb3JtOnNjYWxlKDEpOy1vLXRyYW5zZm9ybTpzY2FsZSgxKTt0cmFuc2Zvcm06c2NhbGUoMSl9fS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnR7cG9zaXRpb246cmVsYXRpdmU7bWFyZ2luLWxlZnQ6NjBweDtiYWNrZ3JvdW5kOiNmZmY7Ym9yZGVyLXJhZGl1czouMjVlbTtwYWRkaW5nOjFlbTtib3gtc2hhZG93OjAgM3B4IDAgI2RkZH0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudC0tbm8tY2hpbGRyZW4gLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudHtiYWNrZ3JvdW5kOjAgMDtib3gtc2hhZG93Om5vbmV9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudDphZnRlcntjb250ZW50OlwiXCI7ZGlzcGxheTp0YWJsZTtjbGVhcjpib3RofS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQgaDJ7Y29sb3I6IzMwM2U0OX0udmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50IC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWRhdGUsLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudCBwe2ZvbnQtc2l6ZToxM3B4O2ZvbnQtc2l6ZTouODEyNXJlbTtmb250LXdlaWdodDo1MDB9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudCAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1kYXRle2Rpc3BsYXk6aW5saW5lLWJsb2NrfS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQgcHttYXJnaW46MWVtIDAgMDtsaW5lLWhlaWdodDoxLjZ9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtdGl0bGV7bWFyZ2luOjB9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtc3VidGl0bGV7bWFyZ2luOjB9LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudCAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1kYXRle2Zsb2F0OmxlZnQ7cGFkZGluZzouOGVtIDA7b3BhY2l0eTouN30udmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50LWFycm93e2NvbnRlbnQ6Jyc7cG9zaXRpb246YWJzb2x1dGU7dG9wOjE2cHg7cmlnaHQ6MTAwJTtoZWlnaHQ6MDt3aWR0aDowO2JvcmRlcjo3cHggc29saWQgdHJhbnNwYXJlbnQ7Ym9yZGVyLXJpZ2h0OjdweCBzb2xpZCAjZmZmfS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LS1uby1jaGlsZHJlbiAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50LWFycm93e2Rpc3BsYXk6bm9uZX1AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6NzY4cHgpey52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQgaDJ7Zm9udC1zaXplOjIwcHg7Zm9udC1zaXplOjEuMjVyZW19LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudCBwe2ZvbnQtc2l6ZToxNnB4O2ZvbnQtc2l6ZToxcmVtfS52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtZGF0ZXtmb250LXNpemU6MTRweDtmb250LXNpemU6Ljg3NXJlbX19QG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOjExNzBweCl7LnZlcnRpY2FsLXRpbWVsaW5lLS10d28tY29sdW1ucyAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50e21hcmdpbi1sZWZ0OjA7cGFkZGluZzoxLjVlbTt3aWR0aDo0NCV9LnZlcnRpY2FsLXRpbWVsaW5lLS10d28tY29sdW1ucyAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50LWFycm93e3RvcDoyNHB4O2xlZnQ6MTAwJTt0cmFuc2Zvcm06cm90YXRlKDE4MGRlZyl9LnZlcnRpY2FsLXRpbWVsaW5lLS10d28tY29sdW1ucyAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50IC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWRhdGV7cG9zaXRpb246YWJzb2x1dGU7d2lkdGg6MTAwJTtsZWZ0OjEyNCU7dG9wOjZweDtmb250LXNpemU6MTZweDtmb250LXNpemU6MXJlbX0udmVydGljYWwtdGltZWxpbmUtLXR3by1jb2x1bW5zIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtLXJpZ2h0IC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQsLnZlcnRpY2FsLXRpbWVsaW5lLS10d28tY29sdW1ucyAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudDpudGgtY2hpbGQoZXZlbik6bm90KC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LS1sZWZ0KSAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50e2Zsb2F0OnJpZ2h0fS52ZXJ0aWNhbC10aW1lbGluZS0tdHdvLWNvbHVtbnMgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC0tcmlnaHQgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudC1hcnJvdywudmVydGljYWwtdGltZWxpbmUtLXR3by1jb2x1bW5zIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50Om50aC1jaGlsZChldmVuKTpub3QoLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtLWxlZnQpIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQtYXJyb3d7dG9wOjI0cHg7bGVmdDphdXRvO3JpZ2h0OjEwMCU7dHJhbnNmb3JtOnJvdGF0ZSgwKX0udmVydGljYWwtdGltZWxpbmUtLXR3by1jb2x1bW5zIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtLXJpZ2h0IC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtZGF0ZSwudmVydGljYWwtdGltZWxpbmUtLXR3by1jb2x1bW5zIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50Om50aC1jaGlsZChldmVuKTpub3QoLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtLWxlZnQpIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtZGF0ZXtsZWZ0OmF1dG87cmlnaHQ6MTI0JTt0ZXh0LWFsaWduOnJpZ2h0fX0udmVydGljYWwtdGltZWxpbmUtLWFuaW1hdGUgLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtY29udGVudC5pcy1oaWRkZW57dmlzaWJpbGl0eTpoaWRkZW59LnZlcnRpY2FsLXRpbWVsaW5lLS1hbmltYXRlIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQuYm91bmNlLWlue3Zpc2liaWxpdHk6dmlzaWJsZTstd2Via2l0LWFuaW1hdGlvbjpjZC1ib3VuY2UtMiAuNnM7LW1vei1hbmltYXRpb246Y2QtYm91bmNlLTIgLjZzO2FuaW1hdGlvbjpjZC1ib3VuY2UtMiAuNnN9QG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOjExNzBweCl7LnZlcnRpY2FsLXRpbWVsaW5lLS10d28tY29sdW1ucy52ZXJ0aWNhbC10aW1lbGluZS0tYW5pbWF0ZSAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LS1yaWdodCAudmVydGljYWwtdGltZWxpbmUtZWxlbWVudC1jb250ZW50LmJvdW5jZS1pbiwudmVydGljYWwtdGltZWxpbmUtLXR3by1jb2x1bW5zLnZlcnRpY2FsLXRpbWVsaW5lLS1hbmltYXRlIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50Om50aC1jaGlsZChldmVuKTpub3QoLnZlcnRpY2FsLXRpbWVsaW5lLWVsZW1lbnQtLWxlZnQpIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQuYm91bmNlLWluey13ZWJraXQtYW5pbWF0aW9uOmNkLWJvdW5jZS0yLWludmVyc2UgLjZzOy1tb3otYW5pbWF0aW9uOmNkLWJvdW5jZS0yLWludmVyc2UgLjZzO2FuaW1hdGlvbjpjZC1ib3VuY2UtMi1pbnZlcnNlIC42c319QG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOjExNjlweCl7LnZlcnRpY2FsLXRpbWVsaW5lLS1hbmltYXRlIC52ZXJ0aWNhbC10aW1lbGluZS1lbGVtZW50LWNvbnRlbnQuYm91bmNlLWlue3Zpc2liaWxpdHk6dmlzaWJsZTstd2Via2l0LWFuaW1hdGlvbjpjZC1ib3VuY2UtMi1pbnZlcnNlIC42czstbW96LWFuaW1hdGlvbjpjZC1ib3VuY2UtMi1pbnZlcnNlIC42czthbmltYXRpb246Y2QtYm91bmNlLTItaW52ZXJzZSAuNnN9fUAtd2Via2l0LWtleWZyYW1lcyBjZC1ib3VuY2UtMnswJXtvcGFjaXR5OjA7LXdlYmtpdC10cmFuc2Zvcm06dHJhbnNsYXRlWCgtMTAwcHgpfTYwJXtvcGFjaXR5OjE7LXdlYmtpdC10cmFuc2Zvcm06dHJhbnNsYXRlWCgyMHB4KX0xMDAley13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCl9fUAtbW96LWtleWZyYW1lcyBjZC1ib3VuY2UtMnswJXtvcGFjaXR5OjA7LW1vei10cmFuc2Zvcm06dHJhbnNsYXRlWCgtMTAwcHgpfTYwJXtvcGFjaXR5OjE7LW1vei10cmFuc2Zvcm06dHJhbnNsYXRlWCgyMHB4KX0xMDAley1tb3otdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCl9fUBrZXlmcmFtZXMgY2QtYm91bmNlLTJ7MCV7b3BhY2l0eTowOy13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTEwMHB4KTstbW96LXRyYW5zZm9ybTp0cmFuc2xhdGVYKC0xMDBweCk7LW1zLXRyYW5zZm9ybTp0cmFuc2xhdGVYKC0xMDBweCk7LW8tdHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTEwMHB4KTt0cmFuc2Zvcm06dHJhbnNsYXRlWCgtMTAwcHgpfTYwJXtvcGFjaXR5OjE7LXdlYmtpdC10cmFuc2Zvcm06dHJhbnNsYXRlWCgyMHB4KTstbW96LXRyYW5zZm9ybTp0cmFuc2xhdGVYKDIwcHgpOy1tcy10cmFuc2Zvcm06dHJhbnNsYXRlWCgyMHB4KTstby10cmFuc2Zvcm06dHJhbnNsYXRlWCgyMHB4KTt0cmFuc2Zvcm06dHJhbnNsYXRlWCgyMHB4KX0xMDAley13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCk7LW1vei10cmFuc2Zvcm06dHJhbnNsYXRlWCgwKTstbXMtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCk7LW8tdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCk7dHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCl9fUAtd2Via2l0LWtleWZyYW1lcyBjZC1ib3VuY2UtMi1pbnZlcnNlezAle29wYWNpdHk6MDstd2Via2l0LXRyYW5zZm9ybTp0cmFuc2xhdGVYKDEwMHB4KX02MCV7b3BhY2l0eToxOy13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTIwcHgpfTEwMCV7LXdlYmtpdC10cmFuc2Zvcm06dHJhbnNsYXRlWCgwKX19QC1tb3ota2V5ZnJhbWVzIGNkLWJvdW5jZS0yLWludmVyc2V7MCV7b3BhY2l0eTowOy1tb3otdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMTAwcHgpfTYwJXtvcGFjaXR5OjE7LW1vei10cmFuc2Zvcm06dHJhbnNsYXRlWCgtMjBweCl9MTAwJXstbW96LXRyYW5zZm9ybTp0cmFuc2xhdGVYKDApfX1Aa2V5ZnJhbWVzIGNkLWJvdW5jZS0yLWludmVyc2V7MCV7b3BhY2l0eTowOy13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMTAwcHgpOy1tb3otdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMTAwcHgpOy1tcy10cmFuc2Zvcm06dHJhbnNsYXRlWCgxMDBweCk7LW8tdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMTAwcHgpO3RyYW5zZm9ybTp0cmFuc2xhdGVYKDEwMHB4KX02MCV7b3BhY2l0eToxOy13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTIwcHgpOy1tb3otdHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTIwcHgpOy1tcy10cmFuc2Zvcm06dHJhbnNsYXRlWCgtMjBweCk7LW8tdHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTIwcHgpO3RyYW5zZm9ybTp0cmFuc2xhdGVYKC0yMHB4KX0xMDAley13ZWJraXQtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCk7LW1vei10cmFuc2Zvcm06dHJhbnNsYXRlWCgwKTstbXMtdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCk7LW8tdHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCk7dHJhbnNmb3JtOnRyYW5zbGF0ZVgoMCl9fSJdLCJzb3VyY2VSb290IjoiIn0= */
+    </style>
+    <style type="text/css">
+        .react-json-view .copy-to-clipboard-container {
+            vertical-align: top;
+            display: none
+        }
+
+        .react-json-view .click-to-add, .react-json-view .click-to-edit, .react-json-view .click-to-remove {
+            display: none
+        }
+
+        .react-json-view .object-content .variable-row:hover .click-to-edit, .react-json-view .object-content .variable-row:hover .click-to-remove, .react-json-view .object-key-val:hover > span > .object-meta-data > .click-to-add, .react-json-view .object-key-val:hover > span > .object-meta-data > .click-to-remove, .react-json-view .object-key-val:hover > span > .object-meta-data > .copy-to-clipboard-container, .react-json-view .variable-row:hover .copy-to-clipboard-container {
+            display: inline-block
+        }
+    </style>
+</head>
+<body>
+    <div id="app"><main id="outer-container"><aside class="hc-aside is-open"><button title="close menu" class="hc-aside__open-btn"><i class="material-icons">menu_open</i></button><div class="hc-aside__logo" title="Logo as background image"></div><nav class="hc-aside-menu"><a aria-current="page" class="hc-aside-menu__item hc-aside-menu__item--active" href="#/healthchecks"><img alt="icon heart check" class="hc-menu-icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjMzNi43ODIgMjk1LjEwMiAyNCAyNCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAzMzYuNzgyIDI5NS4xMDIgMjQgMjQiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0zNTcuNTA2LDMwNS41ODljLTEuMjk5LDAtMi40OTgsMC42OTktMy4xNDYsMS44NDhjLTAuNjQ4LTEuMTQ5LTEuODQ3LTEuODQ4LTMuMTQ2LTEuODQ4CgkJYy0yLjc0NiwwLTQuMTQ0LDMuMTk2LTIuNjQ2LDUuMzQ0bDAuMDUsMC4wNDlsMy44OTYsNC4yOTRjLTAuMDUxLDAuMDUtMC4xMDEsMC4xLTAuMTUsMC4yYy0wLjk0OSwwLjk0OS0yLjE5NywxLjQ0OC0zLjU0NSwxLjQ0OAoJCWMtMi43OTYsMC01LjA0My0yLjI0Ny01LjA0My01LjA0M3YtNC40NDRjMy4yOTUtMC4yNSw1Ljk0Mi0zLjA0Niw1Ljk0Mi02LjM5MnYtMy42OTVjMC0wLjMtMC4yLTAuNS0wLjQ5OS0wLjVsMCwwbDAsMGgtMS41NDgKCQl2LTAuMjQ5YzAtMC4zLTAuMi0wLjUtMC40OTktMC41aC0xLjA0OWMtMC40OTksMC0wLjg5OSwwLjQtMC44OTksMC44OTl2MC42YzAsMC40OTksMC40LDAuODk5LDAuODk5LDAuODk5aDEuMDQ5CgkJYzAuMjk5LDAsMC40OTktMC4yLDAuNDk5LTAuNXYtMC4xNWgxLjA0OXYzLjI0NmMwLDIuOTk3LTIuNDQ4LDUuNDQ0LTUuNDQzLDUuNDQ0Yy0zLjA0NSwwLTUuNDkzLTIuNDQ3LTUuNDkzLTUuNDQ0di0zLjI0NmgxLjQ0OAoJCXYwLjJjMCwwLjMsMC4yLDAuNSwwLjUsMC41aDEuMDQ4YzAuNSwwLDAuODk5LTAuMzk5LDAuODk5LTAuODk5di0wLjU5OWMwLTAuNDk5LTAuMzk5LTAuODk5LTAuODk5LTAuODk5aC0xLjA0OAoJCWMtMC4zLDAtMC41LDAuMi0wLjUsMC41djAuMmgtMS45NDhsMCwwbDAsMGMtMC4zLDAtMC41LDAuMi0wLjUsMC41djMuNzQ1YzAsMy4zOTYsMi41OTcsNi4xNDMsNS45NDIsNi4zOTN2NC40NDMKCQljMCwzLjI5NiwyLjY5Nyw2LjA0Miw2LjA0Miw2LjA0MmMxLjU5OCwwLDMuMDk2LTAuNjQ4LDQuMjQ1LTEuNzQ3YzAuMDQ5LTAuMDUsMC4wOTgtMC4xLDAuMTQ5LTAuMTVsMC41NSwwLjU5OQoJCWMwLjE0OSwwLjIsMC4zOTksMC4zLDAuNjQ4LDAuM2MwLjI1LDAsMC41LTAuMSwwLjY0OC0wLjNsNS4xNDUtNS42NDJsMC4wNS0wLjA1QzM2MS42NTEsMzA4Ljc4NiwzNjAuMjUzLDMwNS41ODksMzU3LjUwNiwzMDUuNTg5egoJCSBNMzQ2LjYyLDI5Ny4zNTFDMzQ2LjYyLDI5Ny4zNTEsMzQ2LjU3LDI5Ny4zNTEsMzQ2LjYyLDI5Ny4zNTFDMzQ2LjU3LDI5Ny4zNTEsMzQ2LjYyLDI5Ny4zNTEsMzQ2LjYyLDI5Ny4zNTF2MC4yaC0wLjQ0OXYtMC40NQoJCWgwLjQ0OVYyOTcuMzUxeiBNMzQwLjIyOSwyOTcuMTAxaDAuNDQ5djAuNDVoLTAuNDQ5VjI5Ny4xMDF6IE0zNTkuMzUzLDMxMC4zODNsLTQuOTkzLDUuNTQybC0wLjU5OS0wLjY0OQoJCWMwLjQtMC41OTksMC42OTktMS4yOTgsMC44NDktMi4wNDdjMS4wNDgtMC4xNSwxLjg0OS0xLjA0OSwxLjg0OS0yLjE0N2MwLTEuMTk4LTEtMi4xOTgtMi4xOTgtMi4xOThjLTEuMTk5LDAtMi4xOTcsMS0yLjE5NywyLjE5OAoJCWMwLDAuOTQ5LDAuNjQ4LDEuNzk3LDEuNTQ4LDIuMDQ3Yy0wLjEsMC40NS0wLjMsMC44OTgtMC41NSwxLjM0OGwtMy43NDUtNC4xNDVjLTAuOTk4LTEuNDk3LTAuMDk5LTMuNzk0LDEuODQ4LTMuNzk0CgkJYzAuOTk5LDAsMS44OTcsMC41NDksMi4zNDgsMS40OTdjMC4xNSwwLjMsMC40NSwwLjUsMC43OTksMC41czAuNjQ4LTAuMiwwLjc5OS0wLjVjMC40NDktMC44OTgsMS4zNS0xLjQ5NywyLjM5Ny0xLjQ5NwoJCUMzNTkuNDU0LDMwNi41ODgsMzYwLjM1MywzMDguODM2LDM1OS4zNTMsMzEwLjM4M3ogTTM1My4wNjEsMzExLjA4M2MwLTAuNjQ5LDAuNTUtMS4xOTgsMS4xOTktMS4xOThzMS4xOTgsMC41NDksMS4xOTgsMS4xOTgKCQljMCwwLjY0OC0wLjU0OSwxLjE5OS0xLjE5OCwxLjE5OVMzNTMuMDYxLDMxMS43MzEsMzUzLjA2MSwzMTEuMDgzeiIvPgo8L2c+Cjwvc3ZnPgo="><span>Health Checks</span></a><a class="hc-aside-menu__item" href="#/webhooks"><img alt="icon gear" class="hc-menu-icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB3aWR0aD0iMTc5MiIgaGVpZ2h0PSIxNzkyIiB2aWV3Qm94PSIwIDAgMTc5MiAxNzkyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMTUyIDg5NnEwLTEwNi03NS0xODF0LTE4MS03NS0xODEgNzUtNzUgMTgxIDc1IDE4MSAxODEgNzUgMTgxLTc1IDc1LTE4MXptNTEyLTEwOXYyMjJxMCAxMi04IDIzdC0yMCAxM2wtMTg1IDI4cS0xOSA1NC0zOSA5MSAzNSA1MCAxMDcgMTM4IDEwIDEyIDEwIDI1dC05IDIzcS0yNyAzNy05OSAxMDh0LTk0IDcxcS0xMiAwLTI2LTlsLTEzOC0xMDhxLTQ0IDIzLTkxIDM4LTE2IDEzNi0yOSAxODYtNyAyOC0zNiAyOGgtMjIycS0xNCAwLTI0LjUtOC41dC0xMS41LTIxLjVsLTI4LTE4NHEtNDktMTYtOTAtMzdsLTE0MSAxMDdxLTEwIDktMjUgOS0xNCAwLTI1LTExLTEyNi0xMTQtMTY1LTE2OC03LTEwLTctMjMgMC0xMiA4LTIzIDE1LTIxIDUxLTY2LjV0NTQtNzAuNXEtMjctNTAtNDEtOTlsLTE4My0yN3EtMTMtMi0yMS0xMi41dC04LTIzLjV2LTIyMnEwLTEyIDgtMjN0MTktMTNsMTg2LTI4cTE0LTQ2IDM5LTkyLTQwLTU3LTEwNy0xMzgtMTAtMTItMTAtMjQgMC0xMCA5LTIzIDI2LTM2IDk4LjUtMTA3LjV0OTQuNS03MS41cTEzIDAgMjYgMTBsMTM4IDEwN3E0NC0yMyA5MS0zOCAxNi0xMzYgMjktMTg2IDctMjggMzYtMjhoMjIycTE0IDAgMjQuNSA4LjV0MTEuNSAyMS41bDI4IDE4NHE0OSAxNiA5MCAzN2wxNDItMTA3cTktOSAyNC05IDEzIDAgMjUgMTAgMTI5IDExOSAxNjUgMTcwIDcgOCA3IDIyIDAgMTItOCAyMy0xNSAyMS01MSA2Ni41dC01NCA3MC41cTI2IDUwIDQxIDk4bDE4MyAyOHExMyAyIDIxIDEyLjV0OCAyMy41eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=="><span>Webhooks</span></a></nav></aside><section class="hc-section-router"><article class="hc-liveness"><header class="hc-liveness__header"><h1>Health Checks Status</h1><div class="hc-refesh-group"><span>Polling interval: <b>10</b> secs</span><button type="button" class="hc-button">Stop polling</button></div></header><div class="hc-liveness__container"><div class="hc-table-container"><table class="hc-table"><thead class="hc-table__head"><tr><th><button title="expand all"><i class="material-icons js-toggle-all">add_circle_outline</i></button></th><th>Name</th><th>Health</th><th>On state from</th><th>Last execution</th></tr></thead><tbody class="hc-table__body"><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>ALL API HEALTH CHECK STATUS</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i></td><td class="align-center">Unhealthy a minute ago</td><td class="align-center">19.07.2024 17:05:18</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>Authentication Check</td><td><span class="tag">authentication</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i>Unhealthy</div></td><td>Authentication check failed: An invalid request URI was provided. Either the request URI must be an absolute URI or BaseAddress must be set.</td><td class="align-center">00:00:00.0120690</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>cpu_usage</td><td><span class="tag">cpuUsage</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>CPU usage is at 1,58%</td><td class="align-center">00:00:01.0039618</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>database_health_check</td><td><span class="tag">database</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Veritabanı bağlantısı başarılı.</td><td class="align-center">00:00:00.0167172</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>disk_space</td><td><span class="tag">disk</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Drive C has 380696 MB free space.</td><td class="align-center">00:00:00.0013680</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>hosted_service_check</td><td><span class="tag">hosted</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i>Unhealthy</div></td><td>The startup task is still running.</td><td class="align-center">00:00:00.0000014</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>inventory_api_health_check</td><td><span class="tag">inventory</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i>Unhealthy</div></td><td>Inventory API is unhealthy</td><td class="align-center">00:00:00.0632929</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>memory</td><td><span class="tag">memory</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Allocated memory is 29464768 bytes, which is below the threshold of 104857600 bytes.</td><td class="align-center">00:00:00.0000086</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>network_latency</td><td><span class="tag">network</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Request to https://localhost:7288/healthchecks-ui#/healthchecks took 21,522 ms.</td><td class="align-center">00:00:00.0218646</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr><tr><td>response_time_check</td><td><span class="tag">response</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>The response time looks good (65).</td><td class="align-center">00:00:00.0001120</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>DATABASE HEALTH CHECK STATUS</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i></td><td class="align-center">Healthy a minute ago</td><td class="align-center">19.07.2024 17:05:18</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>database_health_check</td><td><span class="tag">database</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Veritabanı bağlantısı başarılı.</td><td class="align-center">00:00:00.0037592</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>RESPONSE TİME HEALTH CHECK STATUS</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i></td><td class="align-center">Healthy a few seconds ago</td><td class="align-center">19.07.2024 17:05:18</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>response_time_check</td><td><span class="tag">response</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>The response time looks good (95).</td><td class="align-center">00:00:00.0000059</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>HOSTED HEALTH CHECK STATUS</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i></td><td class="align-center">Unhealthy a minute ago</td><td class="align-center">19.07.2024 17:05:18</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>hosted_service_check</td><td><span class="tag">hosted</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i>Unhealthy</div></td><td>The startup task is still running.</td><td class="align-center">00:00:00.0000020</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>MEMORY HEALTH CHECK STATUS</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i></td><td class="align-center">Healthy a minute ago</td><td class="align-center">19.07.2024 17:05:18</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>memory</td><td><span class="tag">memory</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Allocated memory is 30291816 bytes, which is below the threshold of 104857600 bytes.</td><td class="align-center">00:00:00.0000137</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>CPU USAGE HEALTH CHECK</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i></td><td class="align-center">Healthy a minute ago</td><td class="align-center">19.07.2024 17:05:19</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>cpu_usage</td><td><span class="tag">cpuUsage</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>CPU usage is at 2,36%</td><td class="align-center">00:00:01.0057358</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>DISK SPACE HEALTH CHECK</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i></td><td class="align-center">Healthy a minute ago</td><td class="align-center">19.07.2024 17:05:19</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>disk_space</td><td><span class="tag">disk</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Drive C has 380695 MB free space.</td><td class="align-center">00:00:00.0009541</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>NETWORK LATENCY HEALTH CHECK</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i></td><td class="align-center">Healthy a minute ago</td><td class="align-center">19.07.2024 17:05:19</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>network_latency</td><td><span class="tag">network</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--successColor);">check_circle</i>Healthy</div></td><td>Request to https://localhost:7288/healthchecks-ui#/healthchecks took 7,6941 ms.</td><td class="align-center">00:00:00.0080260</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>AUTHENTİCATİON HEALTH CHECK</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i></td><td class="align-center">Unhealthy a minute ago</td><td class="align-center">19.07.2024 17:05:19</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>Authentication Check</td><td><span class="tag">authentication</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i>Unhealthy</div></td><td>Authentication check failed: An invalid request URI was provided. Either the request URI must be an absolute URI or BaseAddress must be set.</td><td class="align-center">00:00:00.0100781</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr><tr class="hc-table__row"><td class="align-center"><i class="material-icons js-toggle-event" title="expand info">add</i></td><td>INVENTORY API HEALTH CHECK</td><td class="align-center"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i></td><td class="align-center">Unhealthy a minute ago</td><td class="align-center">19.07.2024 17:05:19</td></tr><tr class="hc-checks-table-container is-hidden"><td colspan="5"><table class="hc-checks-table"><thead class="hc-checks-table__header"><tr><th style="width: 20%;">Name</th><th style="width: 10%;">Tags</th><th style="width: 10%;">Health</th><th style="width: 30%;">Description</th><th style="width: 20%;">Duration</th><th style="width: 10%;">Details</th></tr></thead><tbody class="hc-checks-table__body"><tr><td>inventory_api_health_check</td><td><span class="tag">inventory</span></td><td><div class="hc-status"><i class="material-icons" style="padding-right: 0.5rem; color: var(--dangerColor);">error</i>Unhealthy</div></td><td>Inventory API is unhealthy</td><td class="align-center">00:00:00.0249584</td><td><button class="hc-action-btn"><i class="material-icons">history</i></button></td></tr></tbody></table><aside class="hc-liveness-panel" style="right: -32rem;"><button class="hc-action-btn"><i class="material-icons">close</i></button></aside></td></tr></tbody></table></div></div></article></section></main></div>
+
+    <script type="text/javascript">
+        var uiEndpoint = "healthchecks-api";
+        var uiSettingsEndpoint = "healthchecks-api/ui-settings";
+        var webhookEndpoint = "healthchecks-webhooks";
+        var asideMenuOpened = true;
+    </script>
+    <script type="text/javascript" src="ui/resources/vendors-dll.js"></script>
+    <script type="text/javascript" src="ui/resources/healthchecks-bundle.js"></script>
+
+    <!-- Visual Studio Browser Link -->
+    <script type="text/javascript" src="/_vs/browserLink" async="async" id="__browserLink_initializationData" data-requestid="4465cb17bec04af28d1654bed03bc0e7" data-requestmappingfromserver="false" data-connecturl="http://localhost:57244/04b6fc98bfde485fa5ef74e26a6122a6/browserLink"></script>
+    <!-- End Browser Link -->
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+
+
+</body>
+</html>
